@@ -28,7 +28,7 @@ public class MessageConsumer {
 
 	private void initProperties() {
 		properties = new Properties();
-		properties.put("bootstrap.servers", "localhost:9092");
+		properties.put("bootstrap.servers", "localhost:9092,localhost:9093");
 		properties.put("group.id", "simple_message_consumer_group");
 		properties.put("client.id", "simple_message_consumer");
 		properties.put("key.deserializer", LongDeserializer.class.getName());
@@ -46,6 +46,7 @@ public class MessageConsumer {
 	
 	public void consumeMessage() {
 		consumer.subscribe(List.of("messages"));
+//		consumer.assign(Collections.singleton(new org.apache.kafka.common.TopicPartition("messages", 1)));
 		while(true) {
 			ConsumerRecords<Long, String> consumerRecords = consumer.poll(Duration.ofMillis(100));
 			for(ConsumerRecord<Long, String> consumerRecord : consumerRecords) {

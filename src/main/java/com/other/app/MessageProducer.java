@@ -27,10 +27,11 @@ public class MessageProducer {
 
 	private void initProperties() {
 		properties = new Properties();
-		properties.put("bootstrap.servers", "localhost:9092");
+		properties.put("bootstrap.servers", "localhost:9092,localhost:9093");
 		properties.put("acks", "all");
 		properties.put("key.serializer", LongSerializer.class.getName());
 		properties.put("value.serializer", StringSerializer.class.getName());
+//		properties.put("partitioner.class", RoundRobinPartitioner.class.getName());
 	}
 
 	private void initProducer(Properties properties) {
