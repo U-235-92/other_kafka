@@ -6,32 +6,21 @@ public class Message {
 
 	private String id;
 	private String payload;
-	private MessageType messageType;
-
-	public MessageType getMessageType() {
-		return messageType;
-	}
-
-	public void setMessageType(MessageType messageType) {
-		this.messageType = messageType;
-	}
 
 	public Message() {
 		super();
 		this.id = Uuid.randomUuid().toString();
 	}
 
-	public Message(String payload, MessageType messageType) {
+	public Message(String payload) {
 		this();
 		this.payload = payload;
-		this.messageType = messageType;
 	}
 	
-	public Message(String id, String payload, MessageType messageType) {
+	public Message(String id, String payload) {
 		super();
 		this.id = id;
 		this.payload = payload;
-		this.messageType = messageType;
 	}
 
 	public String getId() {
@@ -48,6 +37,6 @@ public class Message {
 
 	@Override
 	public String toString() {
-		return "Message [id=" + id + ", payload=" + payload + ", messageType=" + messageType + "]";
+		return "Message [id=" + id + ", payload=" + payload + "]";
 	}
 }

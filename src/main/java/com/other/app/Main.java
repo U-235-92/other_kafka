@@ -12,8 +12,8 @@ public class Main {
 		ExecutorService executorService = Executors.newFixedThreadPool(2);
 		MessageProducer messageProducer = new MessageProducer("Messager");
 		MessageConsumer messageConsumer = new MessageConsumer();
-		executorService.submit(messageProducer);
-		executorService.submit(messageConsumer);
+		executorService.execute(messageProducer);
+		executorService.execute(messageConsumer);
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
 			messageConsumer.shutdown();
 		}));

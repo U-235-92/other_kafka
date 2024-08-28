@@ -16,7 +16,7 @@ public class MessagePrtitioner implements Partitioner {
 	@Override
 	public int partition(String topic, Object key, byte[] keyBytes, Object value, byte[] valueBytes, Cluster cluster) {
 		int numberOfPartitions = cluster.partitionCountForTopic(topic);
-		if(((MessageType) key).compareTo(MessageType.PROMPT) == 0) {
+		if(((String) key).equals(MessageType.PROMPT.name())) {
 			return numberOfPartitions - 1;
 		}
 		return Math.abs(Utils.murmur2(keyBytes)) % (numberOfPartitions - 1);
