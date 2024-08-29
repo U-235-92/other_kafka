@@ -13,6 +13,7 @@ public class MessageDeserializer implements Deserializer<Message> {
 	public Message deserialize(String topic, byte[] data) {
 		ByteBuffer buffer = ByteBuffer.allocate(data.length);
 		buffer.put(data);
+		buffer.rewind();
 		String id = getId(buffer);
 		String payload = getPayload(buffer);
 		Message message = new Message(id, payload);
