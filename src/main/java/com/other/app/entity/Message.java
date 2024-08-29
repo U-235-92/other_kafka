@@ -1,9 +1,13 @@
 package com.other.app.entity;
 
+import java.io.Serializable;
+
 import org.apache.kafka.common.Uuid;
 
-public class Message {
+public class Message implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private String id;
 	private String payload;
 
